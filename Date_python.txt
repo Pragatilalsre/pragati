@@ -1,0 +1,83 @@
+
+####Example 1
+
+
+current Date               FromDate        ToDate         Monthes
+
+jan2022 (1 to 30)          jan2021        Dec2021         12Months
+feb2022 (1 to 28)          jan2021        jan2022         13Months
+Mar2022  (1 to 30)         jan2021        feb2022         14Months
+
+###Solution
+import datetime
+from dateutil import relativedelta
+year=int(input("enter year in YYYY format"))
+month= int(input("enter month in MM format"))
+day= int(input("enter day in DD format"))
+d1 = datetime.date(year, month, day)
+d2= datetime.date(year-1, 1, 1)
+d3= datetime.date(year , month-1 , 1)
+delta = relativedelta.relativedelta(d3, d2)
+month = delta.months + (delta.years * 12) + 1
+print(d1)
+print(d2)
+print(d3)
+print("{} months" . format(month))
+
+----------------------------------------------------------------------------------------------------------------
+####Example 2
+
+Q2 curretnt month-1
+
+April(1 to 30)             jan2022         March 2022     3 Months
+May(1 to 31)               jan2022          April2022     4 Months
+june (1 to 30)             jan2022          May2022       5 Months
+
+####Solution
+import datetime
+from dateutil import relativedelta
+year=int(input("enter year in YYYY format"))
+month= int(input("enter month in MM format"))
+day= int(input("enter day in DD format"))
+d1 = datetime.date(year, month, day)
+d2= datetime.date(year, 1, 1)
+d3= datetime.date(year , month-1 , 1)
+delta = relativedelta.relativedelta(d3, d2)
+month = delta.months + (delta.years * 12) + 1
+print(d1)
+print(d2)
+print(d3)
+print("{} months" . format(month))
+----------------------------------------------------------------------------------------------------------------------
+
+####Example 3
+
+oct 1 nov 15             Jan 2022         Dec 2022      12 Months
+ 
+ In case(currentmonth-1)
+ 
+ Nov 16                   Jan 2002         oct 2022     10 Months
+
+####Solution
+
+import datetime
+from dateutil import relativedelta
+year=int(input("enter year in YYYY format"))
+month= int(input("enter month in MM format"))
+day= int(input("enter day in DD format"))
+d1 = datetime.date(year, month, day)
+d_start = datetime.date(year, 10, 1)
+d_end = datetime.date(year, 11, 15)
+if d_start < d1 < d_end:
+    d2= datetime.date(year, 1, 1)
+    d3= datetime.date(year , 12 , 1)
+else:
+    d2= datetime.date(year, 1, 1)
+    d3= datetime.date(year , month-1 , 1)
+
+delta = relativedelta.relativedelta(d3, d2)
+month = delta.months + (delta.years * 12) + 1
+print(d1)
+print(d2)
+print(d3)
+print("{} months" . format(month))
